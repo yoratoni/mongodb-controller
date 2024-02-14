@@ -1,4 +1,4 @@
-import logger from "utils/logger";
+import { config } from "dotenv";
 
 
-logger.info("Hello world!");
+config();
