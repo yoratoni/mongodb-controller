@@ -1,7 +1,7 @@
 {
-    "name": "ts-node-boilerplate",
+    "name": "mongodb-controller",
     "version": "1.0.0",
-    "description": "TS-Node Boilerplate",
+    "description": "A Node.js environment allowing to edit, rename and update MongoDB collections and fields.",
     "repository": "https://github.com/yoratoni/ts-node-boilerplate",
     "author": "yoratoni <yoratoni.dev@gmail.com>",
     "license": "MIT",
