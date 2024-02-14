@@ -38,7 +38,7 @@ async function main() {
     logger.verbose(`Number of documents in the collection: ${documentCount}`);
 
     // Run the controller
-    controller(db, collection, documentCount);
+    await controller(db, collection, documentCount);
 
     // Close the MongoDB server connection
     await closeMongoDbServerConnection();

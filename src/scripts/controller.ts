@@ -1,5 +1,7 @@
 import { Collection, Db } from "mongodb";
 
+import { findDocuments, renameCollection, renameField } from "helpers/dbOperations";
+
 
 /**
  * The main controller function.
@@ -8,5 +10,7 @@ import { Collection, Db } from "mongodb";
  * @param count The number of documents to process.
  */
 export default async function controller(db: Db, collection: Collection, count: number) {
+    // const test = await renameField(collection, {}, "licenceId", "licenseId");
 
+    // await renameCollection(collection, "licenses");
 }
