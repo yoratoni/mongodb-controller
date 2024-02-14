@@ -1,6 +1,7 @@
 declare namespace NodeJS {
     interface ProcessEnv {
-        DATABASE_URL: string
+        MONGODB_SERVER_URL: string
         DATABASE_NAME: string
+        DATABASE_COLLECTION: string
     }
 }
