@@ -93,3 +93,10 @@ npm run migrate --list
 yarn migrate --list
 ```
 **Note:** The `--list` flag can be replaced by `-l`.
+
+To run a migration script, run on of these depending on the package manager you are using:
+```bash
+npm run migrate --run=<migrationName>
+yarn migrate --run=<migrationName>
+```
+**Note:** The `--run` flag can be replaced by `-r`.
