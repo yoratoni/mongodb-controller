@@ -13,9 +13,9 @@ import logger from "utils/logger";
 /**
  * Information about this migration script.
  */
-export const info__template: MigrationInfo = {
-    name: "template",
-    description: "migration template",
+export const info__newRestrictedField: MigrationInfo = {
+    name: "Add a new 'restricted' field to the 'aliases' collection (default to false)",
+    description: "Was missing from some documents..",
     author: "Yoratoni"
 };
 
@@ -25,6 +25,6 @@ export const info__template: MigrationInfo = {
  * @param collection The collection.
  * @param count The number of documents to process.
  */
-export default async function template(db: Db, collection: Collection, count: number) {
-    logger.warn("Running the template, seriously? It won't do anything!");
+export default async function newRestrictedField(db: Db, collection: Collection, count: number) {
+    await addFieldToCollection(collection, {}, "restricted", false);
 }

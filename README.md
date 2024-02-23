@@ -33,7 +33,9 @@ DATABASE_NAME=
 DATABASE_COLLECTION=
 ```
 
-4. Go into the `src/migrations` folder and copy this code (or the one from the `template.ts` file) into a new file:
+Creating a Migration Script
+---------------------------
+1. Go into the `src/migrations` folder and copy this code (or the one from the `template.ts` file) into a new file:
 ```typescript
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Collection, Db } from "mongodb";
@@ -48,7 +50,7 @@ import { MigrationInfo } from "types/migration";
 import logger from "utils/logger";
 
 /**
- * Information about this migration.
+ * Information about this migration script.
  */
 export const info__template: MigrationInfo = {
     name: "",
@@ -57,7 +59,7 @@ export const info__template: MigrationInfo = {
 };
 
 /**
- * The main migration function.
+ * The main migration script function.
  * @param db The database.
  * @param collection The collection.
  * @param count The number of documents to process.
@@ -66,10 +68,10 @@ export default async function template(db: Db, collection: Collection, count: nu
 
 }
 ```
-**Note:** I recommend you to find a proper name for your migration file and to fill the `info` object with the proper information
-as it will be used to display the migration information in the console when listing the available migrations.
+**Note:** I recommend you to find a proper name for your migration script file and to fill the `info` object with the proper information
+as it will be used to display the migration script information in the console when listing the available migration script.
 
-5. Add the migration file to the `index.ts` file in the `src/migrations` folder:
+2. Don't forget to add the migration script file to the `index.ts` file in the `src/migrations` folder:
 ```typescript
 import template, { info__template } from "./template";
 // Import new migrations here
@@ -81,9 +83,13 @@ export {
     // Add new migrations here
 };
 ```
-**Note:** The info object should be named `info__<migrationName>` and the migration function should be named `<migrationName>`.
+**Note:** The info object should be named `info__<migrationName>` and the migration script function should be named `<migrationName>`.
 
-5. Run the project:
+Commands
+--------
+To list the available migration scripts, run on of these depending on the package manager you are using:
 ```bash
-npm run migrate / yarn migrate
+npm run migrate --list
+yarn migrate --list
 ```
+**Note:** The `--list` flag can be replaced by `-l`.

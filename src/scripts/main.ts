@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import { config } from "dotenv";
 import minimist from "minimist";
 
 import { closeMongoDbServerConnection, connectToCollection, connectToDb } from "helpers/dbConnections";
-import * as migrations from "migrations";
+import * as allMigrations from "migrations";
+import { MigrationInfo } from "types/migration";
 import logger from "utils/logger";
 
 
@@ -21,52 +23,95 @@ async function main() {
     // Get the command line arguments
     const argv = minimist(process.argv.slice(2));
 
-    // Type of migrations index
-    const migrationDir = migrations as { [key: string]: unknown; };
+    // Typing the migrations object
+    const migrations = allMigrations as { [key: string]: unknown; };
+
+    // Recovering the migration scripts
+    const migrationScripts = [];
+
+    for (const element in migrations) {
+        const migrationScript = {} as { info: MigrationInfo, function: Function; };
+
+        if (element.includes("info__")) {
+            migrationScript.info = migrations[element] as MigrationInfo;
+
+            // Recover the function name from the info name
+            const functionName = element.replace("info__", "");
+            migrationScript.function = migrations[functionName] as Function;
+
+            migrationScripts.push(migrationScript);
+        }
+    }
 
     // List all the available migration scripts
     if ("list" in argv || "l" in argv) {
+        if (migrationScripts.length === 0) {
+            logger.info("No migration scripts found.. Add some to the 'src/migrations' folder!");
+            return;
+        }
+
         logger.info("Available migration scripts:");
 
-        const functions = [];
-        const info = [];
+        for (const script of migrationScripts) {
+            // Skip the template
+            if (script.info.name === "template") continue;
 
-        for (const migration in migrationDir) {
-            console.log(migration);
+            logger.info(`- ${script.info.name} by ${script.info.author} (${script.info.description}).`);
         }
 
         return;
     }
 
+    // Run a specific migration script
+    if ("run" in argv || "r" in argv) {
+        const scriptName = argv.run || argv.r;
 
-    // // Load the database
-    // const db = await connectToDb();
+        if (!scriptName) {
+            logger.error("No migration script specified to run");
+            return;
+        }
 
-    // if (!db) {
-    //     logger.error("Database not found / instantiated");
-    //     return;
-    // }
+        const script = migrationScripts.find((s) => s.info.name === scriptName);
 
-    // // Load the collection
-    // const collection = await connectToCollection(db, process.env.DATABASE_COLLECTION as string);
+        if (!script) {
+            logger.error(`Migration script '${scriptName}' not found`);
+            return;
+        }
 
-    // if (!collection) {
-    //     logger.error("Collection not found / instantiated");
-    //     return;
-    // }
+        // Load the database
+        const db = await connectToDb();
 
-    // // Count the number of documents in the collection
-    // const documentCount = await collection.estimatedDocumentCount();
-    // logger.verbose(`Number of documents in the collection: ${documentCount}`);
+        if (!db) {
+            logger.error("Database not found / instantiated");
+            return;
+        }
 
-    // // Run the migration script
-    // console.log("");
-    // logger.info("Running migration script...");
-    // // await migrate(db, collection, documentCount);
-    // console.log("");
+        // Load the collection
+        const collection = await connectToCollection(db, process.env.DATABASE_COLLECTION as string);
 
-    // // Close the MongoDB server connection
-    // await closeMongoDbServerConnection();
+        if (!collection) {
+            logger.error("Collection not found / instantiated");
+            return;
+        }
+
+        // Count the number of documents in the collection
+        const documentCount = await collection.estimatedDocumentCount();
+        logger.verbose(`Number of documents in the collection: ${documentCount}`);
+
+        // Run the migration script
+        console.log("");
+        logger.info("Running the following migration script:");
+        logger.info(`${script.info.name} by ${script.info.author} (${script.info.description}).`);
+
+        console.log("");
+        await script.function(db, collection, documentCount);
+        console.log("");
+
+        // Close the MongoDB server connection
+        await closeMongoDbServerConnection();
+
+        return;
+    }
 }
 
 
