@@ -24,5 +24,5 @@ export default async function controller(db: Db, collection: Collection, count: 
     /**
      * Added "restricted" field to the "aliases" collection with the default value "false".
      */
-    const test = await addFieldToCollection(collection, {}, "restricted", false);
+    // const test = await addFieldToCollection(collection, {}, "restricted", false);
 }
