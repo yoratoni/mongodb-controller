@@ -13,10 +13,10 @@ import logger from "utils/logger";
 /**
  * Information about this migration.
  */
-export const info: MigrationInfo = {
-    name: "template",
-    description: "This is a template migration.",
-    author: "The author of the migration"
+export const info__template: MigrationInfo = {
+    name: "",
+    description: "",
+    author: ""
 };
 
 /**
@@ -25,6 +25,6 @@ export const info: MigrationInfo = {
  * @param collection The collection.
  * @param count The number of documents to process.
  */
-export default async function migrate(db: Db, collection: Collection, count: number) {
-    logger.warn("This is a migration template. check the README for more information on how to create a migration file");
+export default async function template(db: Db, collection: Collection, count: number) {
+
 }

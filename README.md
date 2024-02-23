@@ -33,7 +33,7 @@ DATABASE_NAME=
 DATABASE_COLLECTION=
 ```
 
-4. Go into the `src/migrations` folder and copy the pre-existing template file to create your own migration files.
+4. Go into the `src/migrations` folder and copy this code (or the one from the `template.ts` file) into a new file:
 ```typescript
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Collection, Db } from "mongodb";
@@ -50,10 +50,10 @@ import logger from "utils/logger";
 /**
  * Information about this migration.
  */
-export const info: MigrationInfo = {
-    name: "template",
-    description: "This is a template migration.",
-    author: "The author of the migration"
+export const info__template: MigrationInfo = {
+    name: "",
+    description: "",
+    author: ""
 };
 
 /**
@@ -62,12 +62,28 @@ export const info: MigrationInfo = {
  * @param collection The collection.
  * @param count The number of documents to process.
  */
-export default async function migrate(db: Db, collection: Collection, count: number) {
-    logger.warn("This is a migration template. check the README for more information on how to create a migration file");
+export default async function template(db: Db, collection: Collection, count: number) {
+
 }
 ```
+**Note:** I recommend you to find a proper name for your migration file and to fill the `info` object with the proper information
+as it will be used to display the migration information in the console when listing the available migrations.
 
-4. Run the project:
+5. Add the migration file to the `index.ts` file in the `src/migrations` folder:
+```typescript
+import template, { info__template } from "./template";
+// Import new migrations here
+
+
+export {
+    template,
+    info__template,
+    // Add new migrations here
+};
+```
+**Note:** The info object should be named `info__<migrationName>` and the migration function should be named `<migrationName>`.
+
+5. Run the project:
 ```bash
 npm run migrate / yarn migrate
 ```
