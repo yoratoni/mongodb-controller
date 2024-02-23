@@ -5,11 +5,11 @@ import { addFieldToCollection, findDocuments, renameCollection, renameField } fr
 
 
 /**
- * The main controller function.
+ * The main migration function.
  * @param db The database.
  * @param collection The collection.
  * @param count The number of documents to process.
  */
-export default async function controller(db: Db, collection: Collection, count: number) {
+export default async function migrate(db: Db, collection: Collection, count: number) {
 
 }
