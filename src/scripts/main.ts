@@ -1,7 +1,7 @@
 import { config } from "dotenv";
 
 import { closeMongoDbServerConnection, connectToCollection, connectToDb } from "helpers/dbConnections";
-import migrate from "migrate";
+import migrate from "migrations/template";
 import logger from "utils/logger";
 
 
@@ -38,7 +38,10 @@ async function main() {
     logger.verbose(`Number of documents in the collection: ${documentCount}`);
 
     // Run the migration script
+    console.log("");
+    logger.info("Running migration script...");
     await migrate(db, collection, documentCount);
+    console.log("");
 
     // Close the MongoDB server connection
     await closeMongoDbServerConnection();
