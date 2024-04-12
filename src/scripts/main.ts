@@ -4,7 +4,7 @@ import minimist from "minimist";
 
 import { closeMongoDbServerConnection, connectToCollection, connectToDb } from "helpers/dbConnections";
 import * as allMigrations from "migrations";
-import { MigrationInfo } from "types/migration";
+import type { MigrationInfo } from "types/migration";
 import logger from "utils/logger";
 
 

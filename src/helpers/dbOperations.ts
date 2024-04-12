@@ -1,4 +1,4 @@
-import { Collection } from "mongodb";
+import type { Collection } from "mongodb";
 
 import logger from "utils/logger";
 

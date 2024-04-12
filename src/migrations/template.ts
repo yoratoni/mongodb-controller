@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Collection, Db } from "mongodb";
+import type { Collection, Db } from "mongodb";
 
 import {
     addFieldToCollection,
@@ -7,8 +7,9 @@ import {
     renameCollection,
     renameField
 } from "helpers/dbOperations";
-import { MigrationInfo } from "types/migration";
+import type { MigrationInfo } from "types/migration";
 import logger from "utils/logger";
+
 
 /**
  * Information about this migration script.

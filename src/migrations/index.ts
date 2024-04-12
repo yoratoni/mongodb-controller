@@ -1,6 +1,8 @@
 import licenceIdToLicenseId, { info__licenceIdToLicenseId } from "migrations/licenceIdToLicenseId";
 import licencesToLicenses, { info__licencesToLicenses } from "migrations/licencesToLicenses";
 import newRestrictedField, { info__newRestrictedField } from "migrations/newRestrictedField";
+
+
 // Import new migrations here
 
 
@@ -17,5 +19,5 @@ export {
     // Add new migrations here
 
     template,
-    info__template,
+    info__template
 };
