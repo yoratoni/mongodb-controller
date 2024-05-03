@@ -15,8 +15,8 @@ import logger from "utils/logger";
  * Information about this migration script.
  */
 export const info__newRestrictedField: MigrationInfo = {
-    name: "Add a new 'restricted' field to the 'aliases' collection (default to false)",
-    description: "Was missing from some documents..",
+    name: "newRestrictedField",
+    description: "Add a new 'restricted' field to the 'aliases' collection (default to false)",
     author: "Yoratoni"
 };
 

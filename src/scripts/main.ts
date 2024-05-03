@@ -56,7 +56,7 @@ async function main() {
             // Skip the template
             if (script.info.name === "template") continue;
 
-            logger.info(`- ${script.info.name} by ${script.info.author} (${script.info.description}).`);
+            logger.info(`- '${script.info.name}' (${script.info.description}) by ${script.info.author}.`);
         }
 
         return;

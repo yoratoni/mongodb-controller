@@ -1,3 +1,4 @@
+import getCounts, { info__getCounts } from "migrations/getCounts";
 import licenceIdToLicenseId, { info__licenceIdToLicenseId } from "migrations/licenceIdToLicenseId";
 import licencesToLicenses, { info__licencesToLicenses } from "migrations/licencesToLicenses";
 import newRestrictedField, { info__newRestrictedField } from "migrations/newRestrictedField";
@@ -10,6 +11,8 @@ import template, { info__template } from "./template";
 
 
 export {
+    getCounts,
+    info__getCounts,
     licenceIdToLicenseId,
     info__licenceIdToLicenseId,
     licencesToLicenses,

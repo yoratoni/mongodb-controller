@@ -15,8 +15,8 @@ import logger from "utils/logger";
  * Information about this migration script.
  */
 export const info__licencesToLicenses: MigrationInfo = {
-    name: "Rename the 'licences' collection to 'licenses'",
-    description: "someone made a typo..",
+    name: "licencesToLicenses",
+    description: "Rename the 'licences' collection to 'licenses'",
     author: "Yoratoni"
 };
 

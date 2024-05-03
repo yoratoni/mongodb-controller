@@ -16,7 +16,7 @@ import logger from "utils/logger";
  */
 export const info__template: MigrationInfo = {
     name: "template",
-    description: "migration template",
+    description: "Migration template",
     author: "Yoratoni"
 };
 

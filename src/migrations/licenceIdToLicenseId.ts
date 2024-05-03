@@ -15,8 +15,8 @@ import logger from "utils/logger";
  * Information about this migration script.
  */
 export const info__licenceIdToLicenseId: MigrationInfo = {
-    name: "Rename the field 'licenceId' to 'licenseId' in the 'usages' collection",
-    description: "someone made a typo..",
+    name: "licenceIdToLicenseId",
+    description: "Rename the field 'licenceId' to 'licenseId' in the 'usages' collection",
     author: "Yoratoni"
 };
 
