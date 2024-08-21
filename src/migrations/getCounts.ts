@@ -19,6 +19,7 @@ export const info__getCounts: MigrationInfo = {
  * @param collection The collection.
  * @param count The number of documents to process.
  */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default async function getCounts(db: Db, collection: Collection, count: number) {
     const count1 = await collection.countDocuments({ "createdAt": { $gte: new Date("2023-12-01"), $lt: new Date("2024-01-01") }, "status": "COMPLETED", "type": "generate" });
     const count2 = await collection.countDocuments({ "createdAt": { $gte: new Date("2024-01-01"), $lt: new Date("2024-02-01") }, "status": "COMPLETED", "type": "generate" });
