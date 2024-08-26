@@ -27,8 +27,8 @@ export const info__sandbox: MigrationInfo = {
  * @param count The number of documents to process.
  */
 export default async function sandbox(db: Db, collection: Collection, count: number) {
-    // Get all aliases
-    const documents = await findDocuments(collection, {});
+    // Get all jobs where createdAt field does not exist
+    const documents = await findDocuments(collection, { createdAt: { $exists: false } });
 
     if (!documents) {
         logger.error("No documents found.");
@@ -37,19 +37,4 @@ export default async function sandbox(db: Db, collection: Collection, count: num
 
     // Log the result
     logger.info(`Found ${documents?.length ?? 0} documents.`);
-
-    const aliasIds: string[] = [];
-
-    // Iterate over all documents
-    for (const doc of documents) {
-        const id = doc.aliasId?.toString();
-
-        if (!id) continue;
-
-        if (aliasIds.includes(id)) {
-            logger.warn(`Duplicate aliasId found: ${id}`);
-        } else {
-            aliasIds.push(id);
-        }
-    };
 }
