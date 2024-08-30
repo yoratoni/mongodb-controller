@@ -24,13 +24,13 @@ async function main() {
     const argv = minimist(process.argv.slice(2));
 
     // Typing the migrations object
-    const migrations = allMigrations as { [key: string]: unknown; };
+    const migrations = allMigrations as { [key: string]: unknown };
 
     // Recovering the migration scripts
     const migrationScripts = [];
 
     for (const element in migrations) {
-        const migrationScript = {} as { info: MigrationInfo, function: Function; };
+        const migrationScript = {} as { info: MigrationInfo; function: Function };
 
         if (element.includes("info__")) {
             migrationScript.info = migrations[element] as MigrationInfo;
