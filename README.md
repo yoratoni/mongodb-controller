@@ -60,11 +60,11 @@ export const info__template: MigrationInfo = {
 
 /**
  * The main migration script function.
- * @param db The database.
- * @param collection The collection.
- * @param count The number of documents to process.
+ * @param _db The database.
+ * @param _collection The collection.
+ * @param _count The number of documents to process.
  */
-export default async function template(db: Db, collection: Collection, count: number) {
+export default async function template(_db: Db, _collection: Collection, _count: number) {
 
 }
 ```
