@@ -9,8 +9,10 @@
     "scripts": {
         "v-bump": "yarn version --patch",
         "migrate": "ts-node src/scripts/main.ts",
-        "lint": "eslint . --ext .ts,.tsx",
-        "lint:fix": "eslint . --ext .ts,.tsx --fix",
+        "lint": "biome lint .",
+        "lint:fix": "biome lint . --apply",
+        "format": "biome format .",
+        "format:fix": "biome format --write .",
         "check-types": "tsc --noEmit --skipLibCheck --incremental false"
     },
     "dependencies": {
