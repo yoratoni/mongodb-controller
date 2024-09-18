@@ -6,6 +6,7 @@ import newRestrictedField, { info__newRestrictedField } from "migrations/newRest
 import sandbox, { info__sandbox } from "migrations/sandbox"
 import txHashToTxHashes, { info__txHashToTxHashes } from "migrations/txHashToTxHashes"
 
+import migrateAllProxies, { info__migrateAllProxies } from "migrations/migrateAllProxies"
 import template, { info__template } from "./template"
 
 export {
@@ -23,6 +24,8 @@ export {
 	info__txHashToTxHashes,
 	NTFPriceToNFTPrice,
 	info__NTFPriceToNFTPrice,
+	migrateAllProxies,
+	info__migrateAllProxies,
 	template,
 	info__template,
 }

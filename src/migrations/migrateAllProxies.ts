@@ -1,14 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Collection, Db } from "mongodb"
+import { ObjectId } from "mongodb"
 import type { MigrationInfo } from "types/migration"
-import logger from "utils/logger"
+import ProxiesJSON from "../assets/fixProxies.json"
 
 /**
  * Information about this migration script.
  */
 export const info__migrateAllProxies: MigrationInfo = {
 	name: "migrateAllProxies",
-	description: "Migration template",
+	description: "Migrate all Alias Studio user proxies to the new Beacon pattern",
 	author: "Yoratoni",
 }
 
@@ -18,6 +19,11 @@ export const info__migrateAllProxies: MigrationInfo = {
  * @param _collection The collection.
  * @param _count The number of documents to process.
  */
-export default function migrateAllProxies(_db: Db, _collection: Collection, _count: number) {
-	logger.warn("Running the template, seriously? It won't do anything!")
+export default async function migrateAllProxies(_db: Db, _collection: Collection, _count: number) {
+	for await (const proxy of ProxiesJSON) {
+		await _collection.updateOne(
+			{ _id: new ObjectId(proxy.aliasId) },
+			{ $set: { aliasNFTAddress: proxy.proxyAddress } },
+		)
+	}
 }
