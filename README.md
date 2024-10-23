@@ -1,5 +1,5 @@
 # MongoDB Migrations
-A Node.js environment allowing to edit, rename and update MongoDB collections and fields.
+A Node.js environment that allows you to edit, rename and update MongoDB collections and fields.
 
 Getting Started
 ---------------
