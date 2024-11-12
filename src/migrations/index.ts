@@ -6,6 +6,7 @@ import newRestrictedField, { info__newRestrictedField } from "migrations/newRest
 import sandbox, { info__sandbox } from "migrations/sandbox"
 import txHashToTxHashes, { info__txHashToTxHashes } from "migrations/txHashToTxHashes"
 
+import isAdvancedMode, { info__isAdvancedMode } from "migrations/isAdvancedMode"
 import migrateAllProxies, { info__migrateAllProxies } from "migrations/migrateAllProxies"
 import v1_0, { info__v1_0 } from "migrations/v1_0"
 import template, { info__template } from "./template"
@@ -31,4 +32,6 @@ export {
 	info__v1_0,
 	template,
 	info__template,
+	isAdvancedMode,
+	info__isAdvancedMode,
 }
