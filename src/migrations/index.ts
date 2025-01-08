@@ -10,6 +10,7 @@ import imagesIdsToImageIds, { info__imagesIdsToImageIds } from "migrations/image
 import isAdvancedMode, { info__isAdvancedMode } from "migrations/isAdvancedMode"
 import migrateAllProxies, { info__migrateAllProxies } from "migrations/migrateAllProxies"
 import v1_0, { info__v1_0 } from "migrations/v1_0"
+import withArtworkValidation, { info__withArtworkValidation } from "migrations/withArtworkValidation"
 import template, { info__template } from "./template"
 
 export {
@@ -30,11 +31,13 @@ export {
 	migrateAllProxies,
 	info__migrateAllProxies,
 	v1_0,
+	info__v1_0,
 	isAdvancedMode,
 	info__isAdvancedMode,
 	imagesIdsToImageIds,
 	info__imagesIdsToImageIds,
-	info__v1_0,
+	withArtworkValidation,
+	info__withArtworkValidation,
 	template,
 	info__template,
 }
