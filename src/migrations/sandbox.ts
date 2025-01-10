@@ -21,8 +21,19 @@ export const info__sandbox: MigrationInfo = {
  * @param _count The number of documents to process.
  */
 export default async function sandbox(_db: Db, _collection: Collection, _count: number) {
-	// Get all jobs where createdAt field does not exist
-	const documents = await findDocuments(_collection, { createdAt: { $exists: false } })
+	// // Get all jobs where createdAt field does not exist
+	// const documents = await findDocuments(_collection, { createdAt: { $exists: false } })
+
+	// if (!documents) {
+	// 	logger.error("No documents found.")
+	// 	return
+	// }
+
+	// // Log the result
+	// logger.info(`Found ${documents?.length ?? 0} documents.`)
+
+	// Get all purchases where "txHashes" exists and has more than 1 element
+	const documents = await findDocuments(_collection, { txHashes: { $exists: true, $ne: [] } })
 
 	if (!documents) {
 		logger.error("No documents found.")

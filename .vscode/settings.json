@@ -42,5 +42,8 @@
         "**/next-env.d.ts": true,
         "**/pubspec.lock": true,
         "packages/contracts/cache": true
-    }
+    },
+    "cSpell.words": [
+        "artverse"
+    ]
 }

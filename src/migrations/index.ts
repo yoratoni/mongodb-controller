@@ -6,6 +6,9 @@ import newRestrictedField, { info__newRestrictedField } from "migrations/newRest
 import sandbox, { info__sandbox } from "migrations/sandbox"
 import txHashToTxHashes, { info__txHashToTxHashes } from "migrations/txHashToTxHashes"
 
+import artverseGalleryIdJobInjection, {
+	info__artverseGalleryIdJobInjection,
+} from "migrations/artverseGalleryIdJobInjection"
 import imagesIdsToImageIds, { info__imagesIdsToImageIds } from "migrations/imagesIdsToImageIds"
 import isAdvancedMode, { info__isAdvancedMode } from "migrations/isAdvancedMode"
 import migrateAllProxies, { info__migrateAllProxies } from "migrations/migrateAllProxies"
@@ -38,6 +41,8 @@ export {
 	info__imagesIdsToImageIds,
 	withArtworkValidation,
 	info__withArtworkValidation,
+	artverseGalleryIdJobInjection,
+	info__artverseGalleryIdJobInjection,
 	template,
 	info__template,
 }
