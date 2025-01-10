@@ -1,4 +1,4 @@
-import type { Collection } from "mongodb"
+import type { Collection, Document, Filter, MatchKeysAndValues } from "mongodb"
 
 import logger from "utils/logger"
 
@@ -126,27 +126,22 @@ export async function renameField(collection: Collection | undefined, query: obj
  */
 export async function updateFieldInCollection(
 	collection: Collection | undefined,
-	query: object,
-	field: string,
-	value: unknown,
+	query: Filter<Document>,
+	data: MatchKeysAndValues<Document>,
 ) {
 	if (!collection) {
 		logger.error("Collection not found / instantiated")
 		return
 	}
 
-	const result = await collection.updateMany(query, {
-		$set: {
-			[field]: value,
-		},
-	})
+	const result = await collection.updateMany(query, { $set: data })
 
 	if (!result) {
 		logger.error("Error updating field")
 		return
 	}
 
-	logger.verbose(`Updated field: '${field}' in ${result.modifiedCount} documents`)
+	logger.verbose(`Updated field(s) in ${result.modifiedCount} documents`)
 }
 
 /**
